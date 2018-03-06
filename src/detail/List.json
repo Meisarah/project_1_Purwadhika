@@ -1,0 +1,30 @@
+[
+    
+    {
+        "name": "Hijab MyHijab",
+        "produk": "Peach Hijab",
+        "harga": "Rp.50.000",
+        "gambar": "/assets/img/shophijab1.jpg"
+    },
+    {
+        "name": "Hijab MyHijab",
+        "produk": "Grey Hijab",
+        "harga": "Rp.50.000",
+        "gambar": "/assets/img/shophijab2.jpg"
+    },
+    
+    {
+        "name": "Hijab MyHijab",
+        "produk": "Pink Hijab",
+        "harga": "Rp.50.000",
+        "gambar": "/assets/img/shophijab3.jpg"
+    },
+    
+    {
+        "name": "Hijab MyHijab",
+        "produk": "Pasmina Special",
+        "harga": "Rp.50.000",
+        "gambar": "/assets/img/shophijab4.jpg"
+    }
+    
+]

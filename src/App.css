@@ -1,0 +1,231 @@
+/* Ini Navbar */
+
+/* Add a dark background color with a little bit see-through */ 
+.navbar {
+  margin-bottom: 0;
+  background-color: #2d2d30;
+  border: 0;
+  font-size: 11px !important;
+  letter-spacing: 4px;
+  opacity:0.9;
+}
+
+/* Add a gray color to all navbar links */
+.navbar li a, .navbar .navbar-brand { 
+  color: #d5d5d5 !important;
+}
+
+/* On hover, the links will turn white */
+.navbar-nav li a:hover {
+  color: #fff !important;
+}
+
+/* The active link */
+.navbar-nav li.active a {
+  color: #fff !important;
+  background-color:#29292c !important;
+}
+
+/* Remove border color from the collapsible button */
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+}
+
+/* Dropdown */
+.open .dropdown-toggle {
+  color: #fff ;
+  background-color: #555 !important;
+}
+
+/* Dropdown links */
+.dropdown-menu li a {
+  color: #000 !important;
+}
+
+/* On hover, the dropdown links will turn red */
+.dropdown-menu li a:hover {
+  background-color: grey !important;
+}
+
+/* Jumbotron */
+.jumbotron { 
+  background-color: white; 
+  color: black;
+  padding: 50px 0px 10px
+}
+
+/* carousel */
+.carousel-caption h3 {
+  color: #fff !important;
+}
+
+/* kotak */
+.kotak{
+  font-family: 'El Messiri', sans-serif;
+  font-size: 18px;
+}
+
+/* bg */
+.bg-1 {
+  background-color: #f6f6f6;
+  color: black;
+  padding: 50px 50px 30px
+}
+.bg-2 {
+  background-color: #ffffff;
+  color: black;
+  padding: 50px 50px 30px
+}
+
+#judul1{
+  font-family: 'El Messiri', sans-serif;
+  font-size: 39px;
+  color: black
+}
+
+/* new collections */
+.gambar1 {
+  position: relative;
+}
+.overlay {
+  position: absolute; 
+  bottom: 0; 
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1; 
+  width: 75%;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 20px;
+  padding: 50px;
+  text-align: center;
+}
+.new {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.gambar1:hover .overlay {
+  opacity: 1;
+}
+
+
+/* Black buttons with extra padding and without rounded borders */
+.btn {
+  background-color: #333;
+  color: #f1f1f1;
+  border-radius: 0;
+  transition: .2s;
+}
+
+/* On hover, the color of .btn will transition to white with black text */
+.btn:hover, .btn:focus {
+  border: 1px solid #333;
+  background-color: #fff;
+  color: #000;
+}
+
+/* product 1 */
+.product1 {
+  position: relative;
+}
+
+.product1img {
+opacity: 1;
+display: block;
+transition: .5s ease;
+backface-visibility: hidden;
+width: 100%;
+}
+
+.middle {
+transition: .5s ease;
+opacity: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+text-align: center;
+}
+
+.product1:hover .product1img{
+opacity: 0.3;
+}
+
+.product1:hover .middle {
+opacity: 1;
+}
+
+.text {
+background-color: black;
+color: white;
+font-size: 16px;
+padding: 16px 32px;
+text-decoration: none;
+}
+.np strong{
+  font-family: 'El Messiri', sans-serif;
+  font-size: 20px;
+}
+.harga p{
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px 
+}
+
+/* footer */
+.bg-footer {
+  color: #fff !important;
+  background-color: rgba(0, 0, 0, 0.945);
+  border: 0;
+  font-size: 11px !important;
+  letter-spacing: 1px;
+  opacity:0.9;
+}
+
+/* icon sosmed */
+.icon-white a {
+  color:#ffffff !important;
+  font-size: 15px;
+}
+.about a {
+  color:#ffffff !important;
+}
+#logo1{
+  font-family: 'Warnes', cursive;
+  font-size: 50px
+}
+#logo2{
+  font-family: 'Warnes', cursive;
+  font-size: 20px
+}
+#footer1{
+  font-family: 'El Messiri', sans-serif;
+  font-size: 25px;
+}
+
+/* product.html */
+.breadcrumb {
+  margin-top: 60px;
+}
+.bread li a {
+  color:black;
+}
+
+/* category */
+.ctgry{
+  margin-bottom: 20px;
+}
+.list-group-item:first-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.list-group-item:last-child {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.warnapager li a{
+  color:black;
+}

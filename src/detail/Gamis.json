@@ -1,0 +1,30 @@
+[
+    
+    {
+        "name": "Gamis MyHijab",
+        "produk": "Black Gamis",
+        "harga": "Rp.150.000",
+        "gambar": "/assets/img/shopgamis1.jpg"
+    },
+    {
+        "name": "Gamis MyHijab",
+        "produk": "Red Gamis",
+        "harga": "Rp.150.000",
+        "gambar": "/assets/img/shopgamis2.jpg"
+    },
+    
+    {
+        "name": "Gamis MyHijab",
+        "produk": "Green Gamis",
+        "harga": "Rp.150.000",
+        "gambar": "/assets/img/shopgamis3.jpg"
+    },
+    
+    {
+        "name": "Gamis MyHijab",
+        "produk": "Pink Gamis",
+        "harga": "Rp.150.000",
+        "gambar": "/assets/img/shopgamis4.jpg"
+    }
+    
+]
