@@ -14,20 +14,18 @@ class Footer extends Component {
 <div className="col-sm-4">
    <h3 id="footer1">Learn more about us</h3><br/>
    <div className="icon-white">
-    <a href="#"><i className="fa fa-facebook"></i></a>  &nbsp; &nbsp;&nbsp;
-    <a href="#"><i className="fa fa-twitter"></i></a> &nbsp; &nbsp;&nbsp;
-    <a href="#"><i className="fa fa-instagram"></i></a>  &nbsp; &nbsp;&nbsp;
-    <a href="#"><i className="fa fa-youtube"></i></a>  &nbsp; &nbsp;&nbsp;
-    <a href="#"><i className="fa fa-whatsapp"></i></a>  &nbsp; &nbsp;&nbsp;
-    <a href="#"><i className="fa fa-envelope"></i></a>  &nbsp; &nbsp;&nbsp;
+    <a href="https://www.facebook.com/"><i className="fa fa-facebook"></i></a>  &nbsp; &nbsp;&nbsp;
+    <a href="https://twitter.com/"><i className="fa fa-twitter"></i></a> &nbsp; &nbsp;&nbsp;
+    <a href="https://www.instagram.com/"><i className="fa fa-instagram"></i></a>  &nbsp; &nbsp;&nbsp;
+    <a href="https://www.youtube.com/"><i className="fa fa-youtube"></i></a>  &nbsp; &nbsp;&nbsp;
    </div>
    <br/>
 
-    <div className="about"><a href="#">About Us</a> &nbsp;
-    <a href="#">Customer Service</a> &nbsp;
-    <a href="#">Terms</a> &nbsp;
-    <a href="#">Privacy</a> &nbsp;
-    <a href="#">Cookies</a>
+    <div className="about"><a href="/">About Us</a> &nbsp;
+    <a href="/">Customer Service</a> &nbsp;
+    <a href="/">Terms</a> &nbsp;
+    <a href="/">Privacy</a> &nbsp;
+    <a href="/">Cookies</a>
     </div>
   </div>
 

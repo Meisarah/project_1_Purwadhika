@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import baner from '../img/baner.jpg';
 import shop1 from '../img/shop1.jpg';
 import shop2 from '../img/shop2.jpg';
-
 import list2 from '../detail/Gamis.json';
 
 class Beranda extends Component {
   
+
   render(){
+
+    const season = this.props.season.map((x)=>{
+        return (
+            <div key = {x.id}>
+            <div className="col-sm-6 gambar1"> 
+                <a href= {`/subcategory/${x.id}`} onClick={() => this.getseasonid(x.id)}><img src={x.pict} alt="Image" className="new"/>
+                <div className="overlay">{x.season}</div></a>    
+            </div>
+            </div>
+        )
+    })
 
     return (
       <div>
@@ -18,6 +30,7 @@ class Beranda extends Component {
 <h1 id="logo1">MyHijab</h1> 
 <p>~Hijab elegan trendy~</p> 
 </div>
+
 
 {/* carousel */}
 <div className="container">
@@ -64,33 +77,25 @@ class Beranda extends Component {
   
   <div className="col-sm-4 kotak">
     <div className="well">
-      <p>MyHijab koleksi terbaru!! <span><a href ="/category">Selengkapnya...</a></span></p>
+      <p>MyHijab koleksi terbaru!! <span><a href ="/">Selengkapnya...</a></span></p>
     </div>
     <div className="well">
-    <p>MyHijab lagi diskon!! <span><a href ="/category">Selengkapnya...</a></span></p>
+    <p>MyHijab lagi diskon!! <span><a href ="/">Selengkapnya...</a></span></p>
     </div>
     <div className="well">
-    <p>MyHijab simpel dan elegan <span><a href ="/category">Selengkapnya...</a></span></p>
+    <p>MyHijab simpel dan elegan <span><a href ="/">Selengkapnya...</a></span></p>
     </div>
   </div>
 </div>
 <hr/>
 </div>
 
+
 {/* New product */}
 <div className="container text-center bg-1">    
 <h3 id="judul1">New Collections</h3><br/>
-<div className="row">
-    <div className="col-sm-6 gambar1">
-      <a href="/product"><img src={shop1} alt="Image" className="new"/></a>
-        <div className="overlay">Hijab Special from MyHijab</div>
-      </div>
-      <div className="col-sm-6 gambar1"> 
-        <a href="/product"><img src={shop2} alt="Image" className="new"/></a>
-        <div className="overlay">Hijab Special from MyHijab</div>    
-      </div>
-</div>
-</div>      
+<div className="row">{season}</div></div>   
+
 
 {/* Products */}
 <div className="container text-center bg-2">
@@ -100,7 +105,7 @@ class Beranda extends Component {
     return <div>
           <div className="col-sm-3"> 
               <div className="product1">
-                              <a href="/category">
+                              <a href="/">
                               <img src={process.env.PUBLIC_URL + gms.gambar} alt="Hijab" className="product1img"/>
                                   <div className="middle text">Buy</div>
                               </a>
@@ -113,7 +118,7 @@ class Beranda extends Component {
     
     
           </div>
-    </div>
+    </div> 
 
 
 </div>

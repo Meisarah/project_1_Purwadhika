@@ -20,6 +20,10 @@
   color: #fff !important;
 }
 
+.navbar-nav li div{
+  color: #fff
+}
+
 /* The active link */
 .navbar-nav li.active a {
   color: #fff !important;

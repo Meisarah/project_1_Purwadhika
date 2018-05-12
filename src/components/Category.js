@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import shop1 from '../img/shop1.jpg';
 import shopgamis1 from '../img/shopgamis1.jpg';
 import shopgamis2 from '../img/shopgamis2.jpg';
 import shopgamis3 from '../img/shopgamis3.jpg';
@@ -9,9 +9,43 @@ import shophijab2 from '../img/shophijab2.jpg';
 import shophijab3 from '../img/shophijab3.jpg';
 import shophijab4 from '../img/shophijab4.jpg';
 
+import axios from 'axios';
+
 class Category extends Component {
   
+    state = {
+        product: []
+    }
+   
+    getsubcategoryid = (id) => {
+        axios.get(`http://localhost:3002/product/${id}`)
+        .then ((product_data) => {
+          this.setState({product:product_data.data})
+        })
+      } 
+    
+    componentWillMount() {
+        this.getsubcategoryid(this.props.idProduct)
+    }
+
   render(){
+
+    const product = this.state.product.map((x)=>{
+        return (
+            <div key = {x.id}>
+            <div className="col-sm-3"> 
+            <div className="product1">
+                            <a href={`/product/${x.id}`} onClick={() => this.getsubcategoryid(x.id)}>
+                            <img src={x.gambar} alt="Hijab" className="product1img" style={{height:310,width:165}}/>
+                                <div className="middle text">Buy</div>
+                            </a>
+                        </div>
+                            <p><strong>{x.product}</strong></p>
+                            <p>My Hijab<br/>Rp.{x.harga}</p>
+                        </div>
+                        </div>
+        )
+    })
 
     return (
       <div>
@@ -19,7 +53,7 @@ class Category extends Component {
        {/* breadcrumb */}
 <div className="container bread">
         <ul className="breadcrumb">
-          <li><a href="/beranda">Beranda</a></li>
+          <li><a href="/">Beranda</a></li>
           <li className="active">Category</li>        
         </ul>
       </div>
@@ -30,16 +64,17 @@ class Category extends Component {
            <div className="col-sm-3">
                    <h3>Category</h3>
                    <ul className="list-group">
-                           <a href="#hijab" className="list-group-item">Hijab <span className="label label-danger">New!</span></a>
-                           <a href="#gamis" className="list-group-item">Gamis <span className="badge">4</span></a> 
-                           <a href="#aksesoris" className="list-group-item">Aksesoris <span className="label label-danger">Sold Out!</span></a> 
+                           <a href="/" className="list-group-item">Hijab <span className="label label-danger">New!</span></a>
+                           <a href="/" className="list-group-item">Gamis <span className="badge">4</span></a> 
+                           <a href="/" className="list-group-item">Aksesoris <span className="label label-danger">Sold Out!</span></a> 
                          </ul>
            </div>
            <div className="col-sm-9 text-center">
                    <div className="row harga np bg-2" id="gamis">
-                           <div className="col-sm-3"> 
+                   {product}
+                           {/* <div className="col-sm-3"> 
                            <div className="product1">
-                                           <a href="/gamis1">
+                                           <a href="#">
                                            <img src={shopgamis1} alt="Gamis" className="product1img"/>
                                                <div className="middle text">Buy</div>
                                            </a>
@@ -61,7 +96,7 @@ class Category extends Component {
                              
                              <div className="col-sm-3"> 
                              <div className="product1">
-                                           <a href="/gamis2">
+                                           <a href="#">
                                            <img src={shopgamis3} alt="Gamis" className="product1img"/>
                                                <div className="middle text">Buy</div>
                                            </a>
@@ -72,21 +107,21 @@ class Category extends Component {
                    
                                <div className="col-sm-3"> 
                                <div className="product1">
-                                               <a href="/gamis3">
+                                               <a href="#">
                                                <img src={shopgamis4} alt="Gamis" className="product1img"/>
                                                    <div className="middle text">Buy</div>
                                                </a>
                                            </div>
                                                <p><strong>Gamis MyHijab</strong></p>
                                                <p>Pink gamis <br/>Rp.150.000</p>
-                                             </div> 
+                                             </div>  */}
                                  </div>
       {/* category hijab */}
 
       <div className="row harga np bg-1" id="hijab"> 
                     <div className="col-sm-3"> 
                         <div className="product1">
-                                        <a href="/hijab1">
+                                        <a href="/">
                                         <img src={shophijab1} alt="Hijab" className="product1img"/>
                                             <div className="middle text">Buy</div>
                                         </a>
@@ -97,7 +132,7 @@ class Category extends Component {
                         
                         <div className="col-sm-3"> 
                         <div className="product1">
-                                        <a href="/hijab2">
+                                        <a href="/">
                                         <img src={shophijab2} alt="Hijab" className="product1img"/>
                                             <div className="middle text">Buy</div>
                                         </a>
@@ -108,7 +143,7 @@ class Category extends Component {
                           
                           <div className="col-sm-3"> 
                           <div className="product1">
-                                        <a href="/hijab3">
+                                        <a href="/">
                                         <img src={shophijab3} alt="Hijab" className="product1img"/>
                                             <div className="middle text">Buy</div>
                                         </a>
@@ -119,7 +154,7 @@ class Category extends Component {
                 
                             <div className="col-sm-3"> 
                             <div className="product1">
-                                            <a href="/hijab4">
+                                            <a href="/">
                                             <img src={shophijab4} alt="Hijab" className="product1img"/>
                                                 <div className="middle text">Buy</div>
                                             </a>
@@ -137,8 +172,8 @@ class Category extends Component {
 
       {/* Pager */}
  <ul className="pager warnapager">
-        <li><a href="#">Previous</a></li>
-        <li><a href="#">Next</a></li>
+        <li><a href="/">Previous</a></li>
+        <li><a href="/">Next</a></li>
       </ul>
     
 
