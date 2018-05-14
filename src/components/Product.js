@@ -4,18 +4,19 @@ import list from '../detail/List.json';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
+let url = 'http://localhost:5000'
 
 class Product extends Component {
-
-constructor(){
-  super();
-  this.state = {
+  state = {
       product_detail: {},
       list_warna: [],
       list_size: [],
       count: 0
-  };
-}
+  }
+
+  getProduct() {
+    axios.get(`${url}/product`)
+  }
 
   getproduct_detailid = (id) => {
     axios.get(`http://localhost:3002/productdetail/${id}`)
@@ -105,13 +106,13 @@ render(){
                    
                     <h4>Jumlah</h4>
                     <div className="row">
-                        <div className="col-sm-4">
+                        <div className="col-sm-5">
                                       <button type="button" className="btn btn-primary" onClick= {this.kurang}>-</button>
                                       <span>&nbsp;&nbsp;&nbsp;{ this.state.count }&nbsp;&nbsp;&nbsp;</span> 
                                       <button type="button" className="btn btn-primary" onClick= {this.tambah}>+</button>
                                         
                         </div>
-                        <div className="col-sm-8">
+                        <div className="col-sm-7">
                                 <button type="button" className="btn btn-primary btn-block" onClick={() => this.cart} value="Submit">Add to Cart</button>
                         </div>
                     </div>

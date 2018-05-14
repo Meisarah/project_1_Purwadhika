@@ -1,35 +1,62 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import Axios from 'axios';
+import { urlAPI } from '../config.json'
+
 import baner from '../img/baner.jpg';
 import shop1 from '../img/shop1.jpg';
 import shop2 from '../img/shop2.jpg';
 import list2 from '../detail/Gamis.json';
 
-class Beranda extends Component {
-  
+import SingleProduct from './SingleProduct';
 
-  render(){
+class Beranda extends Component {
+    state = {
+        listProduct: []
+    }
+
+    getProduct() {
+        Axios.get(`${urlAPI}/product`)
+        .then(res => {
+            this.setState({ 
+                listProduct: res.data.list.map((el, i) => 
+                    <SingleProduct 
+                        key={i}
+                        id= {el.id}
+                        gambar='/shopgamis1.jpg' 
+                        nama={el.product}
+                        product={el.deskripsi}
+                        harga={el.harga}
+                    />
+                ) 
+            })
+        })
+    }
+
+    componentWillMount() {
+        this.getProduct()
+    }
+
+    render() {
 
     const season = this.props.season.map((x)=>{
         return (
             <div key = {x.id}>
-            <div className="col-sm-6 gambar1"> 
-                <a href= {`/subcategory/${x.id}`} onClick={() => this.getseasonid(x.id)}><img src={x.pict} alt="Image" className="new"/>
-                <div className="overlay">{x.season}</div></a>    
-            </div>
+                <div className="col-sm-6 gambar1"> 
+                    <a href= {`/subcategory/${x.id}`} onClick={() => this.getseasonid(x.id)}><img src={x.pict} alt="Image" className="new"/>
+                    <div className="overlay">{x.season}</div></a>    
+                </div>
             </div>
         )
     })
 
     return (
-      <div>
-       
-
-     {/* Jumbotron */}
-<div className="jumbotron text-center kotak">
-<h1 id="logo1">MyHijab</h1> 
-<p>~Hijab elegan trendy~</p> 
-</div>
+        <div>
+                {/* Jumbotron */}
+            <div className="jumbotron text-center kotak">
+            <h1 id="logo1">MyHijab</h1> 
+            <p>~Hijab elegan trendy~</p> 
+        </div>
 
 
 {/* carousel */}
@@ -101,20 +128,7 @@ class Beranda extends Component {
 <div className="container text-center bg-2">
 
 <div className="row harga np">
-{list2.map(function(gms) {
-    return <div>
-          <div className="col-sm-3"> 
-              <div className="product1">
-                              <a href="/">
-                              <img src={process.env.PUBLIC_URL + gms.gambar} alt="Hijab" className="product1img"/>
-                                  <div className="middle text">Buy</div>
-                              </a>
-                          </div>
-                              <p><strong>{gms.name}</strong></p>
-                              <p>{gms.produk}<br/>{gms.harga}</p>
-                            </div>
-                            </div>
-})}
+{this.state.listProduct}
     
     
           </div>
