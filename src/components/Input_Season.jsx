@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { urlAPI } from '../config.json'
+import { urlAPI } from '../config.json';
 import Axios from 'axios';
 
 export default class Input_Season extends Component{
@@ -28,7 +28,6 @@ export default class Input_Season extends Component{
 
     addProduct({ subcategory_id, product, harga, deskripsi, gambar }) {
         Axios.post(`${urlAPI}/product`, { subcategory_id, product, harga, deskripsi, gambar })
-        .then(res => {})
     }
 
     componentWillMount() {

@@ -8,24 +8,26 @@ import Beranda from './components/Beranda';
 import Footer from './components/Footer';
 import Subcategory from './components/Subcategory';
 import Navbar from './components/Navbar';
-import InputSeason from './components/Input_Season';
+import InputProduct from './components/Input_Season';
+import Register from './components/Register.jsx';
+import Login from './components/Login';
 // import Search from './components/Search';
 
 class App extends Component {
 
-constructor(){
-  super();
-  this.state = {season:[], cart:0}
-}
+// constructor(){
+//   super();
+//   this.state = {season:[], cart:0}
+// }
 
 
-    componentWillMount(){
-      axios.get("http://localhost:3002/")
-      .then((season_data)=>{console.log(season_data);
-        this.setState({season:season_data.data});
-        console.log(this.state)
-      })
-    }
+//     componentWillMount(){
+//       axios.get("http://localhost:3002/")
+//       .then((season_data)=>{console.log(season_data);
+//         this.setState({season:season_data.data});
+//         console.log(this.state)
+//       })
+//     }
 
   
   render(){
@@ -33,14 +35,16 @@ constructor(){
     return (
       <div>
         <div>
-        <Navbar cart={this.state.cart}/>
-        <Route exact path="/" render = {() => <Beranda season={this.state.season} getSeasonID={this.getseasonid}/>}/>
-        <Route path="/product/:id" render = {({ match }) => <Product idProduct_detail={ match.params.id }/>}/>
+        <Navbar/>
+        <Route exact path="/" render = {() => <Beranda/>}/>
+        <Route path="/product/:id" render = {({ match }) => <Product idProduct={ match.params.id }/>}/>
         <Route path="/subcategory/:id" render = {({ match }) => <Subcategory idSeason={ match.params.id }/>}/>
-        <Route path="/category/:id" render = {({ match }) => <Category idProduct={ match.params.id }/>}/>
+        <Route path="/category/:id" render = {({ match }) => <Category idSubCategory={ match.params.id }/>}/>
         {/* <Route path="/search/:id" render = {({match})=> <Search idSearch={ match.params.id }/>}/> */}
         </div>
-        <Route path="/inputseason" component={InputSeason}/>
+        <Route path="/inputproduct" component={InputProduct}/>
+        <Route path="/register" component={Register}/>
+        <Route path="/login" component={Login}/>
      <Footer/>
 </div>
 );

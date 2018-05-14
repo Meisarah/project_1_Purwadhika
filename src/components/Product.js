@@ -3,50 +3,51 @@ import data from '../detail/Detail.json';
 import list from '../detail/List.json';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-
-let url = 'http://localhost:5000'
+import { urlAPI } from '../config.json';
 
 class Product extends Component {
   state = {
+      product: {},
       product_detail: {},
       list_warna: [],
       list_size: [],
       count: 0
   }
 
-  getProduct() {
-    axios.get(`${url}/product`)
+  getProduct(id) {
+    axios.get(`${urlAPI}/product/${id}`).then(product => this.setState({ product: product.data.list }))
   }
 
-  getproduct_detailid = (id) => {
-    axios.get(`http://localhost:3002/productdetail/${id}`)
-    .then((product) => {
-      this.setState({
-        product_detail: product.data.rows1[0],
-        list_warna: product.data.rows2,
-        list_size: product.data.rows3
-      });
-      // console.log('meooong', product.data);
-    })
-  } 
+  // getproduct_detailid = (id) => {
+  //   axios.get(`http://localhost:3002/productdetail/${id}`)
+  //   .then((product) => {
+  //     this.setState({
+  //       product_detail: product.data.rows1[0],
+  //       list_warna: product.data.rows2,
+  //       list_size: product.data.rows3
+  //     });
+  //     // console.log('meooong', product.data);
+  //   })
+  // } 
 
 componentWillMount() {
-  this.getproduct_detailid(this.props.idProduct_detail);
+  this.getProduct(this.props.idProduct)
+  // this.getproduct_detailid(this.props.idProduct_detail);
 }
 
-cart(x) 
-{
-  axios.post('http://localhost:3002/cart', 
-  { 
-    namaproduk: x.namaproduk.value, 
-    hargaproduk: x.hargaproduk.value,
-    warna: x.warna.value, 
-    ukuran: x.ukuran.value,
-  })
-  .then(function(response){
-    console.log('saved successfully')
-  });
-}
+// cart(x) 
+// {
+//   axios.post('http://localhost:3002/cart', 
+//   { 
+//     namaproduk: x.namaproduk.value, 
+//     hargaproduk: x.hargaproduk.value,
+//     warna: x.warna.value, 
+//     ukuran: x.ukuran.value,
+//   })
+//   .then(function(response){
+//     console.log('saved successfully')
+//   });
+// }
 
 tambah= () => {
   this.setState({
@@ -65,7 +66,8 @@ tambah= () => {
 render(){
   
     let product = () => {
-      let detail = this.state.product_detail
+      let detail = this.state.product
+      console.log(detail)
       return (
         <div>
           <div className="col-sm-4">

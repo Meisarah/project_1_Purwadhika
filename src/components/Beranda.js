@@ -12,7 +12,8 @@ import SingleProduct from './SingleProduct';
 
 class Beranda extends Component {
     state = {
-        listProduct: []
+        listProduct: [],
+        listSeason: []
     }
 
     getProduct() {
@@ -33,22 +34,41 @@ class Beranda extends Component {
         })
     }
 
+    getSeason() {
+        Axios.get(`${urlAPI}/season`)
+        .then(res => {
+            this.setState({ 
+                listSeason: res.data.list.map((el, i) =>
+                    <div key = {el.id}>
+                        <div className="col-sm-6 gambar1"> 
+                            <a href= {`/subcategory/${el.id}`}>
+                                <img src={el.pict} alt="Image" className="new"/>
+                                <div className="overlay">{el.season}</div>    
+                            </a>    
+                        </div>
+                    </div>
+                ) 
+            })
+        })
+    }
+
     componentWillMount() {
         this.getProduct()
+        this.getSeason()
     }
 
     render() {
 
-    const season = this.props.season.map((x)=>{
-        return (
-            <div key = {x.id}>
-                <div className="col-sm-6 gambar1"> 
-                    <a href= {`/subcategory/${x.id}`} onClick={() => this.getseasonid(x.id)}><img src={x.pict} alt="Image" className="new"/>
-                    <div className="overlay">{x.season}</div></a>    
-                </div>
-            </div>
-        )
-    })
+    // const season = this.props.season.map((x)=>{
+    //     return (
+    //         <div key = {x.id}>
+    //             <div className="col-sm-6 gambar1"> 
+    //                 <a href= {`/subcategory/${x.id}`} onClick={() => this.getseasonid(x.id)}><img src={x.pict} alt="Image" className="new"/>
+    //                 <div className="overlay">{x.season}</div></a>    
+    //             </div>
+    //         </div>
+    //     )
+    // })
 
     return (
         <div>
@@ -121,7 +141,9 @@ class Beranda extends Component {
 {/* New product */}
 <div className="container text-center bg-1">    
 <h3 id="judul1">New Collections</h3><br/>
-<div className="row">{season}</div></div>   
+<div className="row">
+{this.state.listSeason}
+</div></div>   
 
 
 {/* Products */}

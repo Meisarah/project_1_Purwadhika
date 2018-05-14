@@ -10,42 +10,66 @@ import shophijab3 from '../img/shophijab3.jpg';
 import shophijab4 from '../img/shophijab4.jpg';
 
 import axios from 'axios';
+import { urlAPI } from '../config.json';
 
 class Category extends Component {
   
     state = {
-        product: []
+        productBySubCategoryId: []
     }
    
-    getsubcategoryid = (id) => {
-        axios.get(`http://localhost:3002/product/${id}`)
-        .then ((product_data) => {
-          this.setState({product:product_data.data})
-        })
-      } 
+    // getsubcategoryid = (id) => {
+    //     axios.get(`http://localhost:3002/product/${id}`)
+    //     .then ((product_data) => {
+    //       this.setState({product:product_data.data})
+    //     })
+    //   } 
     
+    getProductBySubCategoryId(id) {
+        axios.get(`${urlAPI}/product/bysubcategory/${id}`)
+        .then(res => {
+            this.setState({
+                productBySubCategoryId: res.data.list.map((el, i) =>
+                    <div key = {i}>
+                        <div className="col-sm-3"> 
+                            <div className="product1">
+                                <a href={`/product/${el.id}`} onClick={() => this.getsubcategoryid(el.id)}>
+                                    <img src={el.gambar} alt="Hijab" className="product1img" style={{height:310,width:165}}/>
+                                    <div className="middle text">Buy</div>
+                                </a>
+                            </div>
+                            <p><strong>{el.product}</strong></p>
+                            <p>My Hijab<br/>Rp.{el.harga}</p>
+                        </div>
+                    </div>
+                )
+            })
+        })
+    }
+
     componentWillMount() {
-        this.getsubcategoryid(this.props.idProduct)
+        this.getProductBySubCategoryId(this.props.idSubCategory)
+        // this.getsubcategoryid(this.props.idProduct)
     }
 
   render(){
 
-    const product = this.state.product.map((x)=>{
-        return (
-            <div key = {x.id}>
-            <div className="col-sm-3"> 
-            <div className="product1">
-                            <a href={`/product/${x.id}`} onClick={() => this.getsubcategoryid(x.id)}>
-                            <img src={x.gambar} alt="Hijab" className="product1img" style={{height:310,width:165}}/>
-                                <div className="middle text">Buy</div>
-                            </a>
-                        </div>
-                            <p><strong>{x.product}</strong></p>
-                            <p>My Hijab<br/>Rp.{x.harga}</p>
-                        </div>
-                        </div>
-        )
-    })
+    // const product = this.state.product.map((x)=>{
+    //     return (
+    //         <div key = {x.id}>
+    //         <div className="col-sm-3"> 
+    //         <div className="product1">
+    //                         <a href={`/product/${x.id}`} onClick={() => this.getsubcategoryid(x.id)}>
+    //                         <img src={x.gambar} alt="Hijab" className="product1img" style={{height:310,width:165}}/>
+    //                             <div className="middle text">Buy</div>
+    //                         </a>
+    //                     </div>
+    //                         <p><strong>{x.product}</strong></p>
+    //                         <p>My Hijab<br/>Rp.{x.harga}</p>
+    //                     </div>
+    //                     </div>
+    //     )
+    // })
 
     return (
       <div>
@@ -71,7 +95,7 @@ class Category extends Component {
            </div>
            <div className="col-sm-9 text-center">
                    <div className="row harga np bg-2" id="gamis">
-                   {product}
+                   {this.state.productBySubCategoryId}
                            {/* <div className="col-sm-3"> 
                            <div className="product1">
                                            <a href="#">
